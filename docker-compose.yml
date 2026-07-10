@@ -1,0 +1,23 @@
+# StudyStack - Phase 1 infrastructure
+# Run: docker compose up -d
+# Stop: docker compose down    (add -v to also wipe the database volume)
+services:
+  db:
+    image: pgvector/pgvector:pg16   # official Postgres 16 + pgvector extension baked in
+    container_name: studystack-db
+    environment:
+      POSTGRES_USER: studystack
+      POSTGRES_PASSWORD: studystack
+      POSTGRES_DB: studystack
+    ports:
+      - "5433:5432"   # host port 5433 to avoid clashing with any local Postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U studystack"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  pgdata:
