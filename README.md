@@ -3,7 +3,7 @@
 RAG study companion for a CS bookshelf — chat with your technical ebooks, get
 answers grounded in real chapters with citations.
 
-**Status: Phase 1** — EPUB ingestion → pgvector → retrieval → grounded answers (CLI).
+**Status: Phase 1 and 2** — EPUB ingestion → pgvector → retrieval → grounded answers (CLI) or FastAPI serivce UI. 
 
 ## Stack
 Python 3.11+ · PostgreSQL 16 + pgvector (Docker) · OpenAI embeddings + gpt-4o-mini · psycopg3
